@@ -1,0 +1,25 @@
+<div class="container-fluid">
+  <div *ngIf="status != 'deployed'" class="card">
+    <div class="card-header">
+      deploy your app
+    </div>
+    <div class="card-body">
+      <label>URL </label>
+      <input type="text" [disabled]="isRequested" [(ngModel)]="url" name="url" />
+    </div>
+    <div class="card-footer">
+      <button type="button" (click)="onDeploy()"> DEPLOY</button>
+      <label *ngIf="isRequested"> Status: {{ status }}</label>
+    </div>
+  </div>
+  <div *ngIf="status == 'deployed'" class="card">
+    <div class="card-header">
+      deploy your app
+    </div>
+    <div class="card-body">
+      <a href="http://{{slug}}.localhost:9201"> Access your App from here </a>
+    </div>
+
+  </div>
+</div>
+<router-outlet></router-outlet>
